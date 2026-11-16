@@ -1,0 +1,40 @@
+{
+  "id": "hszl41qfrl",
+  "name": {
+    "tr": "Daireler",
+    "en": "Flats",
+    "ar": "الشقق"
+  },
+  "description": {
+    "tr": "Kat ve daire seçimi, daire tipleri ve kat planları (kurgusal).",
+    "en": "Floor and flat selection, flat types and floor plans (fictional).",
+    "ar": "اختيار الطابق والشقة وأنواع الشقق ومخططاتها (افتراضي)."
+  },
+  "keyword": {
+    "tr": "Proje",
+    "en": "Project",
+    "ar": "المشروع"
+  },
+  "path": "hizmetler",
+  "icon": "apartment",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "d7z2z8",
+      "c0r308"
+    ],
+    "footer": []
+  },
+  "index": 0,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Daireler",
+    "en": "Flats",
+    "ar": "الشقق"
+  },
+  "date": "2026-11-16T18:11:36.599Z",
+  "update": "2026-11-16T18:12:19.039Z"
+}

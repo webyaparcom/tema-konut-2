@@ -1,0 +1,114 @@
+{
+  "data": [
+    {
+      "id": "hszl41qfrl",
+      "name": {
+        "tr": "Daireler",
+        "en": "Flats",
+        "ar": "الشقق"
+      },
+      "description": {
+        "tr": "Kat ve daire seçimi, daire tipleri ve kat planları (kurgusal).",
+        "en": "Floor and flat selection, flat types and floor plans (fictional).",
+        "ar": "اختيار الطابق والشقة وأنواع الشقق ومخططاتها (افتراضي)."
+      },
+      "path": "hizmetler",
+      "icon": "apartment",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "d7z2z8",
+          "c0r308"
+        ],
+        "footer": []
+      },
+      "index": 0
+    },
+    {
+      "name": {
+        "tr": "Proje",
+        "en": "Project",
+        "ar": "المشروع"
+      },
+      "status": "play",
+      "id": "hakkimizda",
+      "path": "hakkimizda",
+      "category": "",
+      "url": "",
+      "index": 1,
+      "icon": "info",
+      "desing": {
+        "header": [],
+        "body": [
+          "k0vtrq",
+          "ah7lsl",
+          "0w06rh"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Sayılar, vaziyet planı ve galeri.",
+        "en": "Figures, site plan and gallery.",
+        "ar": "الأرقام ومخطط الموقع والمعرض."
+      }
+    },
+    {
+      "id": "zw1l55w5ca",
+      "name": {
+        "tr": "Sorular",
+        "en": "Questions",
+        "ar": "الأسئلة"
+      },
+      "description": {
+        "tr": "Merak edilenler ve kısa yanıtlar.",
+        "en": "Common questions and short answers.",
+        "ar": "أسئلة متكررة وإجابات موجزة."
+      },
+      "path": "sorular",
+      "icon": "help",
+      "category": "",
+      "status": "play",
+      "desing": {
+        "header": [],
+        "body": [
+          "xr25gc",
+          "c0r308"
+        ],
+        "footer": []
+      },
+      "index": 2
+    },
+    {
+      "name": {
+        "tr": "Konum",
+        "en": "Location",
+        "ar": "الموقع"
+      },
+      "status": "play",
+      "id": "iletisim",
+      "path": "iletisim",
+      "category": "",
+      "url": "",
+      "index": 3,
+      "icon": "location_on",
+      "desing": {
+        "header": [],
+        "body": [
+          "wa98h2",
+          "k8mp01"
+        ],
+        "footer": []
+      },
+      "pathnext": "",
+      "description": {
+        "tr": "Satış ofisi, ulaşım ve harita.",
+        "en": "Sales office, transport and map.",
+        "ar": "مكتب المبيعات والمواصلات والخريطة."
+      }
+    }
+  ],
+  "desc": []
+}

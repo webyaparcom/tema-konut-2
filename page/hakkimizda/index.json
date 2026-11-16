@@ -1,0 +1,48 @@
+{
+  "name": {
+    "tr": "Proje",
+    "en": "Project",
+    "ar": "المشروع"
+  },
+  "status": "play",
+  "category": "",
+  "id": "hakkimizda",
+  "url": "",
+  "path": "hakkimizda",
+  "index": 1,
+  "icon": "info",
+  "desing": {
+    "header": [],
+    "body": [
+      "k0vtrq",
+      "ah7lsl",
+      "0w06rh"
+    ],
+    "footer": []
+  },
+  "pathnext": "",
+  "description": {
+    "tr": "Sayılar, vaziyet planı ve galeri.",
+    "en": "Figures, site plan and gallery.",
+    "ar": "الأرقام ومخطط الموقع والمعرض."
+  },
+  "spot": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "desc": {},
+  "title": {
+    "tr": "Proje",
+    "en": "Project",
+    "ar": "المشروع"
+  },
+  "keyword": {
+    "tr": "hakkımızda",
+    "en": "about",
+    "ar": "من نحن"
+  },
+  "text": {},
+  "update": "2026-11-16T18:12:19.043Z",
+  "date": "2026-10-30"
+}

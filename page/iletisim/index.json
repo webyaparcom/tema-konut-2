@@ -1,0 +1,47 @@
+{
+  "name": {
+    "tr": "Konum",
+    "en": "Location",
+    "ar": "الموقع"
+  },
+  "status": "play",
+  "category": "",
+  "id": "iletisim",
+  "url": "",
+  "path": "iletisim",
+  "index": 3,
+  "icon": "location_on",
+  "desing": {
+    "header": [],
+    "body": [
+      "wa98h2",
+      "k8mp01"
+    ],
+    "footer": []
+  },
+  "pathnext": "",
+  "description": {
+    "tr": "Satış ofisi, ulaşım ve harita.",
+    "en": "Sales office, transport and map.",
+    "ar": "مكتب المبيعات والمواصلات والخريطة."
+  },
+  "spot": {
+    "tr": "",
+    "en": "",
+    "ar": ""
+  },
+  "desc": {},
+  "title": {
+    "tr": "Konum",
+    "en": "Location",
+    "ar": "الموقع"
+  },
+  "keyword": {
+    "tr": "iletişim",
+    "en": "contact",
+    "ar": "اتصال"
+  },
+  "text": {},
+  "update": "2026-11-16T18:12:19.052Z",
+  "date": "2026-10-30"
+}
