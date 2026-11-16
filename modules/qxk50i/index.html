@@ -1,0 +1,156 @@
+<header class="modulex-ust-radyal{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-ust-radyal-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</header>
+
+<style>
+  /* ust-radyal — Menü liste ya da panel değil, dairesel kadran (radyal menü): sayfalar merkezin çevresinde açılır — oyun/uygulama arayüzü dili, eşit uzaklıkta tek bakış. */
+  .modulex-ust-radyal { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-ust-radyal *, .modulex-ust-radyal *::before, .modulex-ust-radyal *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-ust-radyal :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-ust-radyal :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-ust-radyal :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-ust-radyal :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-ust-radyal img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-ust-radyal) img { height: auto; }
+  .modulex-ust-radyal [hidden] { display: none !important; }
+  .modulex-ust-radyal :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-ust-radyal :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-ust-radyal-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-ust-radyal-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-ust-radyal--bassiz .modulex-ust-radyal-bas { display: none; }
+  .modulex-ust-radyal-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-ust-radyal-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-ust-radyal-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-ust-radyal-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-ust-radyal-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-ust-radyal-dugme:hover { transform: translateY(-2px); }
+  .modulex-ust-radyal-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-ust-radyal-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-ust-radyal-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-ust-radyal { position: relative; z-index: 900; }
+  .modulex-ust-radyal-logo { display: inline-flex; flex: 0 1 auto; min-width: 0; align-items: center; color: inherit; text-decoration: none; }
+  /* dar ekranda geniş logo/uzun ad çubuğu taşırmasın: logo daralır (img max-width 100%), ad sarar */
+  .modulex-ust-radyal-logo img { width: auto; max-height: --logoH--; }
+  .modulex-ust-radyal-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-ust-radyal-oge { position: relative; display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-weight: 600; text-decoration: none; transition: color 0.2s ease, background 0.2s ease; }
+  .modulex-ust-radyal-oge:hover, .modulex-ust-radyal-oge[aria-current="page"] { color: --accentInk--; }
+  .modulex-ust-radyal-cta { display: inline-flex; flex: none; align-items: center; gap: 6px; min-height: 44px; padding: 8px 18px; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; white-space: nowrap; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .modulex-ust-radyal-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -12px --accent--; }
+  .modulex-ust-radyal-cta .material-symbols-outlined, .modulex-ust-radyal-tel .material-symbols-outlined, .modulex-ust-radyal-posta .material-symbols-outlined { font-size: 18px; }
+  .modulex-ust-radyal-tel, .modulex-ust-radyal-posta { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; white-space: nowrap; }
+  .modulex-ust-radyal-tel:hover, .modulex-ust-radyal-posta:hover { color: --accentInk--; }
+  .modulex-ust-radyal-dil:empty { display: none; }
+  .modulex-ust-radyal-ac { display: none; align-items: center; gap: 10px; min-width: 46px; min-height: 46px; padding: 0 12px; border: 1px solid --cizgi--; border-radius: 999px; background: transparent; color: inherit; font: inherit; font-weight: 700; }
+  .modulex-ust-radyal-ac-ikon { display: grid; gap: 4px; width: 20px; }
+  .modulex-ust-radyal-ac-ikon span { display: block; height: 2px; border-radius: 2px; background: currentColor; transition: transform 0.3s ease, opacity 0.3s ease; }
+  .modulex-ust-radyal--acik .modulex-ust-radyal-ac-ikon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .modulex-ust-radyal--acik .modulex-ust-radyal-ac-ikon span:nth-child(2) { opacity: 0; }
+  .modulex-ust-radyal--acik .modulex-ust-radyal-ac-ikon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .modulex-ust-radyal-kapat { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 1px solid --cizgi--; border-radius: 50%; background: transparent; color: inherit; }
+  .modulex-ust-radyal-perde { position: fixed; inset: 0; z-index: 1; background: color-mix(in srgb, --text-- 45%, transparent); animation: modulex-ust-radyal-sol 0.3s ease both; }
+  @keyframes modulex-ust-radyal-sol { from { opacity: 0; } to { opacity: 1; } }
+
+  .modulex-ust-radyal-yuva { display: flex; align-items: center; gap: 14px 24px; padding-block: 12px; }
+  .modulex-ust-radyal-yuva > .modulex-ust-radyal-logo { margin-inline-end: auto; }
+  .modulex-ust-radyal-yedekliste { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+  .modulex-ust-radyal--js .modulex-ust-radyal-nav--yedek { display: none; }
+  .modulex-ust-radyal-yuvauc { display: flex; align-items: center; gap: 14px; }
+  .modulex-ust-radyal--js .modulex-ust-radyal-dugme { display: inline-flex; }
+  .modulex-ust-radyal .modulex-ust-radyal-dugme { justify-content: center; width: 56px; min-width: 56px; height: 56px; padding: 0; border: 0; border-radius: 50%; background-color: --accent--; color: --accentText--; box-shadow: 0 12px 24px -14px --accent--; transition: transform 0.35s ease, box-shadow 0.3s ease; }
+  .modulex-ust-radyal .modulex-ust-radyal-dugme:hover { box-shadow: 0 16px 30px -14px --accent--; transform: rotate(90deg); }
+  .modulex-ust-radyal-panel { position: fixed; inset: 0; z-index: 2; display: grid; place-items: center; align-content: center; gap: 22px; padding: 24px 16px; overflow-y: auto; background-color: color-mix(in srgb, --bg-- 92%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); animation: modulex-ust-radyal-sol 0.3s ease both; }
+  .modulex-ust-radyal-cember { --cap: min(80vw, 62vh, 520px); position: relative; width: var(--cap); height: var(--cap); border-radius: 50%; background-image: radial-gradient(circle, color-mix(in srgb, --accent-- 14%, transparent) 0 22%, transparent 23%); box-shadow: inset 0 0 0 1px --cizgi--, inset 0 0 0 calc(var(--cap) * 0.12) color-mix(in srgb, --text-- 3%, transparent); animation: modulex-ust-radyal-acil 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.2) both; }
+  @keyframes modulex-ust-radyal-acil { from { opacity: 0; transform: scale(0.6) rotate(-40deg); } to { opacity: 1; transform: none; } }
+  .modulex-ust-radyal-kadran > li { position: absolute; inset: 0; width: 126px; height: 54px; margin: auto; transform: rotate(calc(var(--i) * 1turn / var(--n))) translateY(calc(var(--cap) * -0.37)) rotate(calc(var(--i) * -1turn / var(--n))); }
+  [dir="rtl"] .modulex-ust-radyal-kadran > li { transform: rotate(calc(var(--i) * -1turn / var(--n))) translateY(calc(var(--cap) * -0.37)) rotate(calc(var(--i) * 1turn / var(--n))); }
+  .modulex-ust-radyal-dilim { display: grid; place-items: center; width: 100%; height: 100%; padding: 6px 10px; border-radius: 999px; background-color: --kartBg--; box-shadow: inset 0 0 0 1px --cizgi--, 0 12px 22px -16px color-mix(in srgb, --text-- 60%, transparent); color: inherit; font-size: 0.95rem; font-weight: 700; line-height: 1.15; text-align: center; text-decoration: none; overflow-wrap: anywhere; animation: modulex-ust-radyal-firla 0.45s cubic-bezier(0.2, 0.8, 0.2, 1.3) both; animation-delay: calc(var(--i, 0) * 50ms); transition: transform 0.25s ease, background-color 0.25s ease; }
+  @keyframes modulex-ust-radyal-firla { from { opacity: 0; transform: scale(0.3); } to { opacity: 1; transform: none; } }
+  .modulex-ust-radyal-dilim:hover { transform: scale(1.08); }
+  .modulex-ust-radyal-dilim[aria-current="page"] { background-color: --accent--; color: --accentText--; }
+  .modulex-ust-radyal-gobek { position: absolute; inset: 0; display: grid; place-items: center; width: 96px; height: 96px; margin: auto; border-radius: 50%; background-color: --text--; color: --bg--; }
+  .modulex-ust-radyal-gobek .modulex-ust-radyal-kapat { border-color: color-mix(in srgb, --bg-- 40%, transparent); transition: transform 0.3s ease; }
+  .modulex-ust-radyal-gobek .modulex-ust-radyal-kapat:hover { transform: rotate(90deg); }
+  .modulex-ust-radyal-cember--izgara { width: min(92vw, 640px); height: auto; padding: 20px; border-radius: 26px; }
+  .modulex-ust-radyal-cember--izgara .modulex-ust-radyal-kadran { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .modulex-ust-radyal-cember--izgara .modulex-ust-radyal-kadran > li { position: static; width: auto; height: auto; min-height: 52px; margin: 0; transform: none; }
+  .modulex-ust-radyal-cember--izgara .modulex-ust-radyal-gobek { position: static; width: auto; height: auto; margin-block-start: 12px; background-color: transparent; color: inherit; }
+  .modulex-ust-radyal-palt { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 22px; }
+  @media (max-width: 768px) {
+    .modulex-ust-radyal-cember { --cap: min(84vw, 56vh, 520px); }
+    .modulex-ust-radyal-kadran > li { width: 108px; height: 50px; }
+    .modulex-ust-radyal-dilim { font-size: 0.86rem; }
+    .modulex-ust-radyal-yuvauc .modulex-ust-radyal-cta { display: none; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-radyal :is(.modulex-ust-radyal-baslik, .modulex-ust-radyal-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-ust-radyal-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-ust-radyal { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-ust-radyal *, .modulex-ust-radyal *::before, .modulex-ust-radyal *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-ust-radyal";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const cekmece = (s, P) => {
+          const ac = s.querySelector("." + P + "-ac");
+          const panel = ac ? document.getElementById(ac.getAttribute("aria-controls")) : null;
+          if (!ac || !panel) return;
+          s.classList.add(P + "--js");
+          const perde = s.querySelector("." + P + "-perde");
+          const modal = panel.getAttribute("aria-modal") === "true";
+          const kok = document.documentElement;
+          const kapa = (odak) => {
+            if (panel.hidden) return;
+            panel.hidden = true;
+            if (perde) perde.hidden = true;
+            ac.setAttribute("aria-expanded", "false");
+            s.classList.remove(P + "--acik");
+            if (modal) kok.style.overflow = "";
+            if (odak) ac.focus();
+          };
+          const aci = () => {
+            panel.hidden = false;
+            if (perde) perde.hidden = false;
+            ac.setAttribute("aria-expanded", "true");
+            s.classList.add(P + "--acik");
+            if (modal) kok.style.overflow = "hidden";
+            const ilk = panel.querySelector("a[href], button");
+            if (ilk) ilk.focus();
+          };
+          ac.addEventListener("click", () => (panel.hidden ? aci() : kapa(true)));
+          panel.addEventListener("click", (e) => {
+            if (e.target.closest("." + P + "-kapat")) kapa(true);
+            else if (e.target.closest("a[href]")) kapa(false);
+          });
+          if (perde) perde.addEventListener("click", () => kapa(true));
+          document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) kapa(true); });
+          if (modal) {
+            panel.addEventListener("keydown", (e) => {
+              if (e.key !== "Tab") return;
+              const o = [...panel.querySelectorAll("a[href], button:not([disabled])")].filter((x) => x.offsetParent !== null);
+              if (!o.length) return;
+              if (e.shiftKey && document.activeElement === o[0]) { e.preventDefault(); o[o.length - 1].focus(); }
+              else if (!e.shiftKey && document.activeElement === o[o.length - 1]) { e.preventDefault(); o[0].focus(); }
+            });
+          }
+          const g = Number(ac.dataset.genis);
+          if (g && window.matchMedia) window.matchMedia(`(min-width: ${g}px)`).addEventListener("change", (m) => { if (m.matches) kapa(false); });
+        };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      cekmece(s, P, az);
+    });
+  })();
+</script>

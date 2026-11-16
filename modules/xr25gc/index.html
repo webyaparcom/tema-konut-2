@@ -1,0 +1,138 @@
+<section class="modulex-sss-pencere{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-sss-pencere-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* sss-pencere — sss-kart-izgara cevapları kartta açık, sss-cevir-kart yerinde örtüyle, sss-ana-detay yan panelde gösterir; bu modül sayfayı sade bir soru karosu ızgarası tutar ve cevabı modal pencerede (dialog, odak tuzağı, pencere içi önceki/sonraki gezinme) okutur. */
+  .modulex-sss-pencere { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-sss-pencere *, .modulex-sss-pencere *::before, .modulex-sss-pencere *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-sss-pencere :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-sss-pencere :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-sss-pencere :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-sss-pencere :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-sss-pencere img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-sss-pencere) img { height: auto; }
+  .modulex-sss-pencere [hidden] { display: none !important; }
+  .modulex-sss-pencere :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-sss-pencere :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-sss-pencere-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-sss-pencere-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-sss-pencere--bassiz .modulex-sss-pencere-bas { display: none; }
+  .modulex-sss-pencere-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-sss-pencere-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-sss-pencere-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-sss-pencere-bas { max-width: 780px; margin-inline: auto; text-align: center; justify-items: center; }
+  .modulex-sss-pencere-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-sss-pencere-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-sss-pencere-dugme:hover { transform: translateY(-2px); }
+  .modulex-sss-pencere-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-sss-pencere-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-sss-pencere-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-sss-pencere-karolar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .modulex-sss-pencere-karo { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: 14px; height: 100%; min-height: 200px; padding: 24px; overflow: hidden; border: 1px solid --cizgi--; border-radius: --yuvarlak--; background-color: --kartBg--; color: --text--; text-decoration: none; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+  .modulex-sss-pencere-karo::after { content: ""; position: absolute; inset-inline: 0; inset-block-end: 0; height: 4px; background-color: --accent--; transform: scaleX(0); transition: transform 0.35s ease; }
+  .modulex-sss-pencere-karo:hover { transform: translateY(-4px); border-color: --accent--; box-shadow: 0 22px 34px -28px rgba(0, 0, 0, 0.55); }
+  .modulex-sss-pencere-karo:hover::after, .modulex-sss-pencere-karo:focus-visible::after { transform: scaleX(1); }
+  /* ikon yazı tipi direction: ltr taşır → mutlak inset-inline RTL'de ters düşer; ikon akışta, satır başında numara */
+  .modulex-sss-pencere-kust { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .modulex-sss-pencere-kno { color: --muted--; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.12em; font-variant-numeric: tabular-nums; }
+  .modulex-sss-pencere-kik { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background-color: color-mix(in srgb, --accent-- 14%, --kartBg--); color: --accentInk--; font-size: 24px; }
+  .modulex-sss-pencere-kyazi { align-self: end; font-size: 1.12rem; font-weight: 750; line-height: 1.35; }
+  .modulex-sss-pencere-kac { justify-self: end; color: --accentInk--; font-size: 22px; transition: transform 0.3s ease; }
+  .modulex-sss-pencere-karo:hover .modulex-sss-pencere-kac { transform: scale(1.2); }
+  .modulex-sss-pencere-cevaplar { display: grid; gap: 14px; margin-block-start: 36px; }
+  .modulex-sss-pencere--pjs .modulex-sss-pencere-cevaplar { display: none; }
+  .modulex-sss-pencere-ckart { display: grid; gap: 12px; padding: clamp(22px, 3vw, 34px); border-radius: --yuvarlak--; background-color: --kartBg--; scroll-margin-block-start: 110px; }
+  .modulex-sss-pencere-ckart:target { box-shadow: 0 0 0 3px --accent--; }
+  .modulex-sss-pencere-ckart:focus { outline: none; }
+  .modulex-sss-pencere-csoru { display: flex; align-items: center; gap: 12px; font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 800; line-height: 1.25; }
+  .modulex-sss-pencere-cik { flex: none; color: --accentInk--; font-size: 30px; }
+  .modulex-sss-pencere-cevap { color: --muted--; font-size: 1.05rem; line-height: 1.8; }
+  .modulex-sss-pencere-pencere { width: min(680px, calc(100% - 32px)); max-height: calc(100% - 48px); padding: 0; border: 0; border-radius: --yuvarlak--; background-color: --kartBg--; color: --text--; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.6); }
+  .modulex-sss-pencere-pencere[open] { animation: modulex-sss-pencere-pac 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .modulex-sss-pencere-pencere::backdrop { background-color: rgba(0, 0, 0, 0.55); backdrop-filter: blur(3px); }
+  .modulex-sss-pencere-pic { position: relative; display: grid; gap: 22px; padding: clamp(26px, 4vw, 44px); }
+  .modulex-sss-pencere-kapat { position: absolute; inset-block-start: 12px; inset-inline-end: 12px; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background-color: --bg--; color: --text--; transition: background-color 0.2s ease, color 0.2s ease; }
+  .modulex-sss-pencere-kapat:hover { background-color: --accent--; color: --accentText--; }
+  .modulex-sss-pencere-yuva .modulex-sss-pencere-ckart { padding: 0; background-color: transparent; }
+  .modulex-sss-pencere-yuva .modulex-sss-pencere-csoru { padding-inline-end: 48px; }
+  .modulex-sss-pencere-palt { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block-start: 18px; border-block-start: 1px solid --cizgi--; }
+  .modulex-sss-pencere-pyon { display: inline-grid; place-items: center; width: 46px; height: 46px; border: 1px solid --cizgi--; border-radius: 50%; background-color: transparent; color: --text--; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+  .modulex-sss-pencere-pyon:hover { border-color: --accent--; background-color: --accent--; color: --accentText--; }
+  .modulex-sss-pencere-psira { color: --muted--; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .modulex-sss-pencere-psira output { color: --text--; font-size: 1.15rem; font-weight: 900; }
+  @keyframes modulex-sss-pencere-pac { from { opacity: 0; transform: translateY(18px) scale(0.97); } to { opacity: 1; transform: none; } }
+  @media (max-width: 1024px) {
+    .modulex-sss-pencere-karolar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 768px) {
+    .modulex-sss-pencere-karolar { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .modulex-sss-pencere-karo { min-height: 0; padding: 18px; }
+    .modulex-sss-pencere-kik { width: 38px; height: 38px; font-size: 20px; }
+  }
+  .modulex-sss-pencere-bag { display: inline-flex; align-items: center; gap: 6px; margin-block-start: 10px; color: --accentInk--; font-weight: 700; text-decoration: none; transition: gap 0.25s ease; }
+  .modulex-sss-pencere-bag:hover { gap: 10px; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-sss-pencere-bag .material-symbols-outlined { font-size: 18px; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sss-pencere :is(.modulex-sss-pencere-baslik, .modulex-sss-pencere-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-sss-pencere-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-sss-pencere { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-sss-pencere *, .modulex-sss-pencere *::before, .modulex-sss-pencere *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-sss-pencere";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const pencere = (s, P) => {
+        const dlg = s.querySelector("dialog[data-pencere]");
+        const ac = [...s.querySelectorAll("[data-pencere-ac]")];
+        const C = [...s.querySelectorAll("[data-pencere-cevap]")];
+        if (!dlg || !ac.length || C.length !== ac.length || typeof dlg.showModal !== "function") return;
+        const kap = C[0].parentElement;
+        const yuva = dlg.querySelector("[data-pencere-yuva]");
+        const sira = dlg.querySelector("[data-pencere-sira]");
+        if (!kap || !yuva) return;
+        s.classList.add(P + "--pjs");
+        let nf = null;
+        try { nf = new Intl.NumberFormat(document.documentElement.lang || undefined); } catch (e) { nf = null; }
+        let i = -1;
+        let son = null;
+        const geri = () => { if (i > -1) { kap.insertBefore(C[i], kap.children[i] || null); i = -1; } };
+        const yerlestir = (n) => {
+          geri();
+          i = (n + C.length) % C.length;
+          yuva.appendChild(C[i]);
+          const h = C[i].querySelector("[id]");
+          if (h) dlg.setAttribute("aria-labelledby", h.id);
+          if (sira) sira.textContent = nf ? nf.format(i + 1) : String(i + 1);
+        };
+        ac.forEach((a, j) => a.addEventListener("click", (e) => { e.preventDefault(); son = a; yerlestir(j); dlg.showModal(); }));
+        dlg.addEventListener("close", () => { geri(); if (son) son.focus(); });
+        dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+        dlg.querySelectorAll("[data-pencere-kapat]").forEach((b) => b.addEventListener("click", () => dlg.close()));
+        dlg.querySelectorAll("[data-pencere-git]").forEach((b) => b.addEventListener("click", () => yerlestir(i + (b.dataset.pencereGit === "ileri" ? 1 : -1))));
+        dlg.addEventListener("keydown", (e) => {
+          if (e.target && e.target.closest && e.target.closest("a")) return;
+          const rtl = getComputedStyle(s).direction === "rtl";
+          if (e.key === (rtl ? "ArrowLeft" : "ArrowRight")) { e.preventDefault(); yerlestir(i + 1); }
+          else if (e.key === (rtl ? "ArrowRight" : "ArrowLeft")) { e.preventDefault(); yerlestir(i - 1); }
+        });
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      pencere(s, P, az);
+    });
+  })();
+</script>

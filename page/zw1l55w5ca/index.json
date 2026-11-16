@@ -1,0 +1,40 @@
+{
+  "id": "zw1l55w5ca",
+  "name": {
+    "tr": "Sorular",
+    "en": "Questions",
+    "ar": "الأسئلة"
+  },
+  "description": {
+    "tr": "Merak edilenler ve kısa yanıtlar.",
+    "en": "Common questions and short answers.",
+    "ar": "أسئلة متكررة وإجابات موجزة."
+  },
+  "keyword": {
+    "tr": "sss, soru cevap",
+    "en": "faq, questions",
+    "ar": "أسئلة وأجوبة"
+  },
+  "path": "sorular",
+  "icon": "help",
+  "category": "",
+  "status": "play",
+  "desing": {
+    "header": [],
+    "body": [
+      "xr25gc",
+      "c0r308"
+    ],
+    "footer": []
+  },
+  "index": 2,
+  "url": "",
+  "text": {},
+  "title": {
+    "tr": "Sorular",
+    "en": "Questions",
+    "ar": "الأسئلة"
+  },
+  "date": "2026-11-16T18:11:36.615Z",
+  "update": "2026-11-16T18:12:19.047Z"
+}

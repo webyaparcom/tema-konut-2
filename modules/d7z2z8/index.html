@@ -1,0 +1,147 @@
+<section class="modulex-konut-kat-cephe{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-konut-kat-cephe-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</section>
+
+<style>
+  /* konut-kat-cephe — module ailesinde bina/kat ekseni yok; hafta-zaman-cizelgesi yatay hafta pistidir, tanitim-sekmeli metin sekmeleri. Bu modül dikey bina cephesini (çatı, kat satırları, durum renkli pencereler) gezinti yapar ve daire envanteri kartlarını kata göre açar; body/daire-tipleri'nin tip kartlarından ve cagri-kat-plani'nın plan çağrısından farklı olarak satış durumu kat × daire düzeyinde. */
+  .modulex-konut-kat-cephe { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-konut-kat-cephe *, .modulex-konut-kat-cephe *::before, .modulex-konut-kat-cephe *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-konut-kat-cephe :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-konut-kat-cephe :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-konut-kat-cephe :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-konut-kat-cephe :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-konut-kat-cephe img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-konut-kat-cephe) img { height: auto; }
+  .modulex-konut-kat-cephe [hidden] { display: none !important; }
+  .modulex-konut-kat-cephe :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-konut-kat-cephe :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-konut-kat-cephe-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-konut-kat-cephe-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-konut-kat-cephe--bassiz .modulex-konut-kat-cephe-bas { display: none; }
+  .modulex-konut-kat-cephe-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-konut-kat-cephe-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-konut-kat-cephe-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-konut-kat-cephe-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-konut-kat-cephe-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-konut-kat-cephe-dugme:hover { transform: translateY(-2px); }
+  .modulex-konut-kat-cephe-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-konut-kat-cephe-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-konut-kat-cephe-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-konut-kat-cephe-giris { display: grid; gap: 14px; max-width: 740px; margin-block-end: 22px; }
+  .modulex-konut-kat-cephe-lejant { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; margin-block-end: 26px; font-size: 0.9rem; font-weight: 650; }
+  .modulex-konut-kat-cephe-lj { display: inline-flex; align-items: center; gap: 8px; }
+  .modulex-konut-kat-cephe-yalniz { display: inline-flex; align-items: center; gap: 8px; margin-inline-start: auto; padding: 8px 14px; border: 1.5px solid --cizgi--; border-radius: 999px; cursor: pointer; transition: border-color 0.2s ease; }
+  .modulex-konut-kat-cephe-yalniz:hover { border-color: --accent--; }
+  .modulex-konut-kat-cephe-ykutu { width: 18px; height: 18px; accent-color: --accent--; }
+  .modulex-konut-kat-cephe-site { display: grid; grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+  .modulex-konut-kat-cephe-site--tek { grid-template-columns: minmax(0, 1fr); }
+  .modulex-konut-kat-cephe-bina { position: sticky; inset-block-start: 96px; display: grid; justify-items: center; }
+  .modulex-konut-kat-cephe-cati { width: 100%; height: 46px; background: --text--; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+  .modulex-konut-kat-cephe-blok { width: 100%; padding: 6px; background: --text--; color: --bg--; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-align: center; text-transform: uppercase; }
+  .modulex-konut-kat-cephe-katlar { display: grid; gap: 6px; width: 100%; padding: 8px; border: 3px solid --text--; border-block-start: 0; background: --kartBg--; }
+  .modulex-konut-kat-cephe-kat { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 8px 10px; border-radius: 8px; color: --text--; text-decoration: none; transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease; }
+  .modulex-konut-kat-cephe-kat:hover { background-color: color-mix(in srgb, --accent-- 12%, transparent); }
+  .modulex-konut-kat-cephe-kat[aria-selected="true"] { background-color: --vurguBg--; color: --vurguText--; transform: scale(1.03); }
+  .modulex-konut-kat-cephe:not(.modulex-konut-kat-cephe--js) .modulex-konut-kat-cephe-kat[aria-selected="true"] { background-color: transparent; color: --text--; transform: none; }
+  .modulex-konut-kat-cephe-kno { min-width: 34px; font-size: 1.15rem; font-weight: 850; font-variant-numeric: tabular-nums; }
+  .modulex-konut-kat-cephe-pencereler { display: flex; flex-wrap: wrap; gap: 6px; }
+  .modulex-konut-kat-cephe-pen { display: inline-block; width: 16px; height: 20px; border: 2px solid currentColor; border-radius: 3px 3px 0 0; }
+  .modulex-konut-kat-cephe-pen--musait { border-color: --accent--; background: --accent--; }
+  .modulex-konut-kat-cephe-pen--rezerve { border-style: dashed; border-color: --accentInk--; background: color-mix(in srgb, --accent-- 20%, transparent); }
+  .modulex-konut-kat-cephe-pen--satildi { border-color: color-mix(in srgb, --text-- 45%, transparent); background: repeating-linear-gradient(45deg, color-mix(in srgb, --text-- 40%, transparent) 0 2px, transparent 2px 5px); }
+  .modulex-konut-kat-cephe-kat[aria-selected="true"] .modulex-konut-kat-cephe-pen--musait { border-color: --vurguText--; }
+  .modulex-konut-kat-cephe-zemin { width: 100%; height: 10px; border-radius: 0 0 6px 6px; background: --accent--; }
+  .modulex-konut-kat-cephe-paneller { display: grid; gap: 28px; min-width: 0; }
+  .modulex-konut-kat-cephe--js .modulex-konut-kat-cephe-kpanel { animation: modulex-konut-kat-cephe-yuksel 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  .modulex-konut-kat-cephe-kbas { margin-block-end: 14px; font-family: var(--mx-font-heading, inherit); font-size: 1.5rem; font-weight: 800; }
+  .modulex-konut-kat-cephe-daireler { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 14px; }
+  .modulex-konut-kat-cephe-daire { display: grid; align-content: start; gap: 10px; padding: 18px; border: 1px solid --cizgi--; border-block-start: 5px solid --accent--; border-radius: --yuvarlak--; background: --kartBg--; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .modulex-konut-kat-cephe-daire:hover { transform: translateY(-3px); box-shadow: 0 16px 30px -24px color-mix(in srgb, --text-- 70%, transparent); }
+  .modulex-konut-kat-cephe-daire[data-d="rezerve"] { border-block-start-style: dashed; border-block-start-color: --accentInk--; }
+  .modulex-konut-kat-cephe-daire[data-d="satildi"] { border-block-start-color: color-mix(in srgb, --text-- 35%, transparent); }
+  .modulex-konut-kat-cephe--musait .modulex-konut-kat-cephe-daire:not([data-d="musait"]) { display: none; }
+  .modulex-konut-kat-cephe-dust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+  .modulex-konut-kat-cephe-dad { font-size: 1.1rem; font-weight: 800; }
+  .modulex-konut-kat-cephe-durum { padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .modulex-konut-kat-cephe-durum--musait { background: --accent--; color: --accentText--; }
+  .modulex-konut-kat-cephe-durum--rezerve { border: 1.5px dashed --accentInk--; color: --accentInk--; }
+  .modulex-konut-kat-cephe-durum--satildi { background: color-mix(in srgb, --text-- 10%, transparent); color: --text--; text-decoration: line-through; }
+  .modulex-konut-kat-cephe-ozellik { display: flex; flex-wrap: wrap; gap: 6px 14px; color: --muted--; font-size: 0.9rem; }
+  .modulex-konut-kat-cephe-ozellik li { display: inline-flex; align-items: center; gap: 5px; }
+  .modulex-konut-kat-cephe-oik { color: --accentInk--; font-size: 18px; }
+  .modulex-konut-kat-cephe-dmetin { color: --muted--; font-size: 0.88rem; }
+  .modulex-konut-kat-cephe-dfiyat { font-size: 1.15rem; font-weight: 850; font-variant-numeric: tabular-nums; }
+  .modulex-konut-kat-cephe-gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .modulex-konut-kat-cephe-site + .modulex-konut-kat-cephe-cta { margin-block-start: 30px; }
+  @keyframes modulex-konut-kat-cephe-yuksel { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 1024px) {
+    .modulex-konut-kat-cephe-site { grid-template-columns: minmax(0, 1fr); }
+    .modulex-konut-kat-cephe-bina { position: static; width: min(100%, 360px); justify-self: center; }
+  }
+  @media (max-width: 768px) {
+    .modulex-konut-kat-cephe-yalniz { margin-inline-start: 0; }
+    .modulex-konut-kat-cephe-daireler { grid-template-columns: minmax(0, 1fr); }
+  }
+  .modulex-konut-kat-cephe-bag { color: inherit; text-decoration: none; }
+  .modulex-konut-kat-cephe-bag:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-konut-kat-cephe-mbaslik { font-size: 1.05rem; font-weight: 700; }
+  .modulex-konut-kat-cephe-mmetin { color: --muted--; font-size: 0.95rem; }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-konut-kat-cephe :is(.modulex-konut-kat-cephe-baslik, .modulex-konut-kat-cephe-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-konut-kat-cephe-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-konut-kat-cephe { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-konut-kat-cephe *, .modulex-konut-kat-cephe *::before, .modulex-konut-kat-cephe *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+<script>
+  (() => {
+    const P = "modulex-konut-kat-cephe";
+    const az = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    const katSec = (s, P) => {
+        const t = [...s.querySelectorAll("[data-kat]")];
+        const yal = s.querySelector("[data-yalniz]");
+        if (yal) {
+          const l = yal.closest("label");
+          if (l) l.hidden = false;
+          yal.addEventListener("change", () => s.classList.toggle(P + "--musait", yal.checked));
+        }
+        if (t.length < 2) return;
+        s.classList.add(P + "--js");
+        const p = t.map((a) => document.getElementById(a.getAttribute("aria-controls")));
+        const sec = (i, odak) => {
+          t.forEach((a, j) => { a.setAttribute("aria-selected", String(j === i)); a.tabIndex = j === i ? 0 : -1; });
+          p.forEach((x, j) => { if (x) x.hidden = j !== i; });
+          if (odak) t[i].focus();
+        };
+        t.forEach((a, i) => {
+          a.addEventListener("click", (e) => { e.preventDefault(); sec(i); });
+          a.addEventListener("keydown", (e) => {
+            let n = null;
+            if (e.key === "ArrowUp") n = i - 1;
+            else if (e.key === "ArrowDown") n = i + 1;
+            else if (e.key === "Home") n = 0;
+            else if (e.key === "End") n = t.length - 1;
+            if (n === null) return;
+            e.preventDefault();
+            sec((n + t.length) % t.length, true);
+          });
+        });
+        sec(Math.max(0, t.findIndex((a) => a.dataset.musait === "1")));
+      };
+    document.querySelectorAll("." + P).forEach((s) => {
+      if (s.dataset.fbHazir) return;
+      s.dataset.fbHazir = "1";
+      katSec(s, P, az);
+    });
+  })();
+</script>

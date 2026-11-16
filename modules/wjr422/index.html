@@ -1,0 +1,110 @@
+<footer class="modulex-alt-metro-hat{{fbsinif}}" {{fbetiket}}>
+  <div class="modulex-alt-metro-hat-ic">
+    {{fbbas}}
+    {{fbgovde}}
+  </div>
+</footer>
+
+<style>
+  /* alt-metro-hat — Site haritası bir ulaşım şeması gibi okunur: her grup kendi renginde kalın bir hat, öğeler duraklar — zaman çizgisinin tek iletişim yolundan farklı olarak paralel çok hatlı ağ; hover'da durak halkası büyür, rozet köşeleri yuvarlanır. */
+  .modulex-alt-metro-hat { box-sizing: border-box; width: 100%; padding: --bosluk-- 20px; background: --bg--; color: --text--; font-size: 1rem; line-height: 1.6; font-family: var(--mx-font-sans, inherit); overflow-wrap: break-word; }
+  .modulex-alt-metro-hat *, .modulex-alt-metro-hat *::before, .modulex-alt-metro-hat *::after { box-sizing: border-box; }
+  /* ham/css.css «* { font-size: 14px }» kalıtımı keser — modül içinde boyut üstten gelsin (ikon yazı tipi hariç) */
+  .modulex-alt-metro-hat :where(*:not(.material-symbols-outlined)) { font-size: inherit; }
+  /* aynı «*» kuralı font-weight 400 · line-height 1.2 · font-family de basar — modül içinde kalıtım */
+  .modulex-alt-metro-hat :where(*:not(.material-symbols-outlined)) { font-weight: inherit; line-height: inherit; font-family: inherit; }
+  .modulex-alt-metro-hat :where(h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd) { margin: 0; }
+  .modulex-alt-metro-hat :where(ul, ol) { padding: 0; list-style: none; }
+  .modulex-alt-metro-hat img { display: block; max-width: 100%; }
+  /* <img width height> öznitelik yüksekliği CSS aspect-ratio'yu ezer — sıfır özgüllükle auto (modül sınıfının height'ı yine kazanır) */
+  :where(.modulex-alt-metro-hat) img { height: auto; }
+  .modulex-alt-metro-hat [hidden] { display: none !important; }
+  .modulex-alt-metro-hat :where(a, button, summary, [data-cevir]) { cursor: pointer; }
+  .modulex-alt-metro-hat :where(a, button, summary, [tabindex]):focus-visible { outline: 3px solid --accent--; outline-offset: 3px; }
+  .modulex-alt-metro-hat-ic { max-width: --max--; margin-inline: auto; }
+  .modulex-alt-metro-hat-bas { display: grid; gap: 12px; margin-block-end: clamp(32px, 4vw, 52px); }
+  .modulex-alt-metro-hat--bassiz .modulex-alt-metro-hat-bas { display: none; }
+  .modulex-alt-metro-hat-ust { color: --accentInk--; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .modulex-alt-metro-hat-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.8rem, 3.4vw, 2.8rem); font-weight: 750; letter-spacing: -0.025em; line-height: 1.1; }
+  .modulex-alt-metro-hat-metin { color: --muted--; font-size: 1.05rem; line-height: 1.7; }
+  .modulex-alt-metro-hat-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-block-start: 8px; }
+  .modulex-alt-metro-hat-dugme { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 12px 22px; border: 2px solid --accent--; border-radius: 999px; background: --accent--; color: --accentText--; font-weight: 700; text-decoration: none; transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease; }
+  .modulex-alt-metro-hat-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-metro-hat-dugme--ikincil { background: transparent; color: --text--; border-color: --cizgi--; }
+  .modulex-alt-metro-hat-dugme--ikincil:hover { border-color: --accent--; }
+  .modulex-alt-metro-hat-dugme .material-symbols-outlined { font-size: 20px; }
+
+  .modulex-alt-metro-hat-bag { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+  .modulex-alt-metro-hat-bag:hover { color: --accentInk--; text-decoration: underline; text-underline-offset: 4px; }
+  .modulex-alt-metro-hat-bag[aria-current="page"] { color: --accentInk--; font-weight: 700; }
+  .modulex-alt-metro-hat-logo { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+  .modulex-alt-metro-hat-logo img { width: auto; max-height: --logoH--; }
+  .modulex-alt-metro-hat-ad { font-family: var(--mx-font-heading, inherit); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .modulex-alt-metro-hat-bbaslik { margin-block-end: 14px; color: --accentInk--; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  .modulex-alt-metro-hat-sayfalar, .modulex-alt-metro-hat-baglantilar, .modulex-alt-metro-hat-iletisim, .modulex-alt-metro-hat-yasal { display: grid; gap: 9px; }
+  .modulex-alt-metro-hat-il { display: flex; align-items: flex-start; gap: 10px; }
+  .modulex-alt-metro-hat-il-ic { display: grid; gap: 2px; }
+  .modulex-alt-metro-hat-il-etiket { color: --muted--; font-size: 0.8rem; }
+  .modulex-alt-metro-hat-il-ikon { flex: none; color: --accentInk--; font-size: 20px; }
+  .modulex-alt-metro-hat-saatler { display: grid; gap: 6px; }
+  .modulex-alt-metro-hat-saat { display: flex; justify-content: space-between; gap: 16px; }
+  .modulex-alt-metro-hat-saat dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .modulex-alt-metro-hat-sosyal { display: flex; flex-wrap: wrap; gap: 10px; }
+  .modulex-alt-metro-hat-sosyal-a { display: inline-grid; place-items: center; width: 42px; height: 42px; border: 1px solid --cizgi--; border-radius: 50%; color: inherit; font-size: 18px; transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
+  .modulex-alt-metro-hat-sosyal-a:hover { border-color: --accent--; background: --accent--; color: --accentText--; transform: translateY(-2px); }
+  .modulex-alt-metro-hat-hakkinda { max-width: 46ch; color: --muted--; }
+  .modulex-alt-metro-hat-telif { display: flex; flex-wrap: wrap; gap: 4px 14px; color: --muted--; font-size: 0.9rem; }
+  .modulex-alt-metro-hat-dil:empty { display: none; }
+  .modulex-alt-metro-hat-yukari { display: inline-grid; place-items: center; flex: none; width: 46px; height: 46px; border-radius: 50%; background: --accent--; color: --accentText--; text-decoration: none; transition: transform 0.25s ease; }
+  .modulex-alt-metro-hat-yukari:hover { transform: translateY(-3px); }
+  .modulex-alt-metro-hat-bulten { display: grid; gap: 8px; }
+  .modulex-alt-metro-hat-nl-etiket { font-size: 0.9rem; font-weight: 700; }
+  .modulex-alt-metro-hat-nl-satir { display: flex; flex-wrap: wrap; gap: 8px; }
+  .modulex-alt-metro-hat-nl-girdi { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 10px 18px; border: 1px solid --cizgi--; border-radius: 999px; background: --bg--; color: --text--; font: inherit; }
+  .modulex-alt-metro-hat-nl-dugme { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 10px 22px; border: 0; border-radius: 999px; background: --accent--; color: --accentText--; font: inherit; font-weight: 700; transition: transform 0.2s ease; }
+  .modulex-alt-metro-hat-nl-dugme:hover { transform: translateY(-2px); }
+  .modulex-alt-metro-hat-nl-dugme .material-symbols-outlined { font-size: 18px; }
+  .modulex-alt-metro-hat-nl-durum:empty { display: none; }
+  .modulex-alt-metro-hat-nl-baslik { font-family: var(--mx-font-heading, inherit); font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+  .modulex-alt-metro-hat-nl-metin { color: --muted--; }
+
+  .modulex-alt-metro-hat-mh-ust { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; padding-block-end: 28px; margin-block-end: 36px; border-block-end: 1px solid --cizgi--; }
+  .modulex-alt-metro-hat-mh-marka { display: grid; gap: 12px; }
+  .modulex-alt-metro-hat-mh-ag { display: grid; gap: 30px; }
+  .modulex-alt-metro-hat-mh-hat { --mh-renk: --accent--; display: grid; grid-template-columns: minmax(150px, 220px) minmax(0, 1fr); align-items: start; gap: 18px 24px; }
+  .modulex-alt-metro-hat-mh-hat--1 { --mh-renk: --text--; }
+  .modulex-alt-metro-hat-mh-hat--2 { --mh-renk: color-mix(in srgb, --accent-- 55%, --text--); }
+  .modulex-alt-metro-hat-mh-hat--3 { --mh-renk: --muted--; }
+  .modulex-alt-metro-hat-mh-rozet { display: flex; align-items: center; gap: 10px; font-size: 0.92rem; font-weight: 800; }
+  .modulex-alt-metro-hat-mh-no { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--mh-renk); color: --bg--; font-size: 0.85rem; font-weight: 900; transition: border-radius 0.3s ease; }
+  .modulex-alt-metro-hat-mh-hat:hover .modulex-alt-metro-hat-mh-no { border-radius: 50%; }
+  .modulex-alt-metro-hat-mh-duraklar { display: flex; flex-wrap: wrap; row-gap: 16px; }
+  .modulex-alt-metro-hat-mh-durak { position: relative; display: grid; justify-items: start; align-content: start; gap: 2px; min-width: 0; padding-block-start: 30px; padding-inline-end: 36px; overflow-wrap: anywhere; }
+  .modulex-alt-metro-hat-mh-durak::before { content: ""; position: absolute; inset-block-start: 8px; inset-inline: 0; height: 6px; background: var(--mh-renk); }
+  .modulex-alt-metro-hat-mh-durak:last-child { padding-inline-end: 0; }
+  .modulex-alt-metro-hat-mh-durak:last-child::before { inset-inline-end: auto; width: 20px; border-start-end-radius: 3px; border-end-end-radius: 3px; }
+  .modulex-alt-metro-hat-mh-durak::after { content: ""; position: absolute; inset-block-start: 1px; inset-inline-start: 0; width: 20px; height: 20px; border: 4px solid var(--mh-renk); border-radius: 50%; background: --bg--; transition: transform 0.25s ease, background-color 0.25s ease; }
+  .modulex-alt-metro-hat-mh-durak:hover::after { transform: scale(1.3); }
+  .modulex-alt-metro-hat-mh-durak--aktarma::after { background: var(--mh-renk); box-shadow: 0 0 0 3px --bg--, 0 0 0 5px var(--mh-renk); }
+  .modulex-alt-metro-hat-mh-etk { color: --muted--; font-size: 0.78rem; }
+  .modulex-alt-metro-hat-mh-dip { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-block-start: 40px; padding-block-start: 20px; border-block-start: 1px solid --cizgi--; }
+  .modulex-alt-metro-hat-mh-dip .modulex-alt-metro-hat-telif { margin-inline-end: auto; }
+  .modulex-alt-metro-hat-mh-yasal { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.9rem; }
+  @media (max-width: 768px) {
+    .modulex-alt-metro-hat-mh-hat { grid-template-columns: minmax(0, 1fr); }
+    .modulex-alt-metro-hat-mh-duraklar { flex-direction: column; row-gap: 0; }
+    .modulex-alt-metro-hat-mh-durak { padding-block: 0 18px; padding-inline: 34px 0; }
+    .modulex-alt-metro-hat-mh-durak::before { inset-block: 0; inset-inline: 7px auto; width: 6px; height: auto; }
+    .modulex-alt-metro-hat-mh-durak:last-child::before { display: none; }
+    .modulex-alt-metro-hat-mh-durak::after { inset-block-start: 0; }
+  }
+
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-metro-hat :is(.modulex-alt-metro-hat-baslik, .modulex-alt-metro-hat-ust, h3, h4, strong) { letter-spacing: 0; }
+  :is([lang="ar"], [lang="fa"], [lang="he"], [lang="ur"]) .modulex-alt-metro-hat-baslik { line-height: 1.35; }
+  @media (max-width: 768px) {
+    .modulex-alt-metro-hat { padding-inline: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .modulex-alt-metro-hat *, .modulex-alt-metro-hat *::before, .modulex-alt-metro-hat *::after { animation: none !important; transition: none !important; }
+  }
+</style>
