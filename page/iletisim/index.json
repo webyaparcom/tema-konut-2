@@ -2,7 +2,9 @@
   "name": {
     "tr": "Konum",
     "en": "Location",
-    "ar": "الموقع"
+    "ar": "الموقع",
+    "de": "Standort",
+    "ru": "Местоположение"
   },
   "status": "play",
   "category": "",
@@ -23,7 +25,9 @@
   "description": {
     "tr": "Satış ofisi, ulaşım ve harita.",
     "en": "Sales office, transport and map.",
-    "ar": "مكتب المبيعات والمواصلات والخريطة."
+    "ar": "مكتب المبيعات والمواصلات والخريطة.",
+    "de": "Verkaufsbüro, Anfahrt und Karte.",
+    "ru": "Офис продаж, проезд и карта."
   },
   "spot": {
     "tr": "",
@@ -34,12 +38,16 @@
   "title": {
     "tr": "Konum",
     "en": "Location",
-    "ar": "الموقع"
+    "ar": "الموقع",
+    "de": "Standort",
+    "ru": "Местоположение"
   },
   "keyword": {
     "tr": "iletişim",
     "en": "contact",
-    "ar": "اتصال"
+    "ar": "اتصال",
+    "de": "Kontakt",
+    "ru": "контакты"
   },
   "text": {},
   "update": "2026-11-16T18:12:19.052Z",

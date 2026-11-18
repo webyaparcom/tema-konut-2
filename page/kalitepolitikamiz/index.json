@@ -3,17 +3,23 @@
   "name": {
     "tr": "Kalite Politikamız",
     "en": "Quality Policy",
-    "ar": "سياسة الجودة"
+    "ar": "سياسة الجودة",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "description": {
     "tr": "Kalite politikamız",
     "en": "Our quality policy",
-    "ar": "سياسة الجودة لدينا"
+    "ar": "سياسة الجودة لدينا",
+    "de": "Unsere Qualitätspolitik",
+    "ru": "Наша политика качества"
   },
   "keyword": {
     "tr": "Kalite Politikamız",
     "en": "quality policy, quality, continuous improvement",
-    "ar": "سياسة الجودة, الجودة, التحسين المستمر"
+    "ar": "سياسة الجودة, الجودة, التحسين المستمر",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "path": "kalitepolitikamiz",
   "icon": "verified",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Kalite Politikamız</h2>\n<p>Yazılı teknik şartname, şeffaf müsaitlik listesi ve teslimde kontrol turu.</p>",
     "en": "<h2>Our quality policy</h2>\n<p>A written specification, a transparent availability list and an inspection walk at handover.</p>",
-    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>مواصفات فنية مكتوبة وقائمة توافر شفافة وجولة فحص عند التسليم.</p>"
+    "ar": "<h2>سياسة الجودة لدينا</h2>\n<p>مواصفات فنية مكتوبة وقائمة توافر شفافة وجولة فحص عند التسليم.</p>",
+    "de": "<h2>Unsere Qualitätsrichtlinie</h2>\n<p>Schriftliche technische Spezifikation, transparente Verfügbarkeitsliste und Kontrollrunde bei der Übergabe.</p>",
+    "ru": "<h2>Наша политика качества</h2>\n<p>Письменное техническое задание, прозрачный список доступности и контрольный обход при передаче.</p>"
   },
   "title": {
     "tr": "Kalite Politikamız",
     "en": "Quality Policy",
-    "ar": "سياسة الجودة"
+    "ar": "سياسة الجودة",
+    "de": "Qualitätspolitik",
+    "ru": "Политика качества"
   },
   "date": "2026-11-16T18:11:36.437Z",
   "update": "2026-11-16T18:12:19.060Z",

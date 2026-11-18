@@ -3,17 +3,23 @@
   "name": {
     "tr": "Daireler",
     "en": "Flats",
-    "ar": "الشقق"
+    "ar": "الشقق",
+    "de": "Wohnungen",
+    "ru": "Квартиры"
   },
   "description": {
     "tr": "Kat ve daire seçimi, daire tipleri ve kat planları (kurgusal).",
     "en": "Floor and flat selection, flat types and floor plans (fictional).",
-    "ar": "اختيار الطابق والشقة وأنواع الشقق ومخططاتها (افتراضي)."
+    "ar": "اختيار الطابق والشقة وأنواع الشقق ومخططاتها (افتراضي).",
+    "de": "Auswahl von Etage und Wohnung, Wohnungstypen und Grundrisse (fiktiv).",
+    "ru": "Выбор этажа и квартиры, типы квартир и поэтажные планы (условные)."
   },
   "keyword": {
     "tr": "Proje",
     "en": "Project",
-    "ar": "المشروع"
+    "ar": "المشروع",
+    "de": "Projekt",
+    "ru": "Проект"
   },
   "path": "hizmetler",
   "icon": "apartment",
@@ -33,7 +39,9 @@
   "title": {
     "tr": "Daireler",
     "en": "Flats",
-    "ar": "الشقق"
+    "ar": "الشقق",
+    "de": "Wohnungen",
+    "ru": "Квартиры"
   },
   "date": "2026-11-16T18:11:36.599Z",
   "update": "2026-11-16T18:12:19.039Z"

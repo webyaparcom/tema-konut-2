@@ -5,12 +5,16 @@
       "name": {
         "tr": "Daireler",
         "en": "Flats",
-        "ar": "الشقق"
+        "ar": "الشقق",
+        "de": "Wohnungen",
+        "ru": "Квартиры"
       },
       "description": {
         "tr": "Kat ve daire seçimi, daire tipleri ve kat planları (kurgusal).",
         "en": "Floor and flat selection, flat types and floor plans (fictional).",
-        "ar": "اختيار الطابق والشقة وأنواع الشقق ومخططاتها (افتراضي)."
+        "ar": "اختيار الطابق والشقة وأنواع الشقق ومخططاتها (افتراضي).",
+        "de": "Auswahl von Etage und Wohnung, Wohnungstypen und Grundrisse (fiktiv).",
+        "ru": "Выбор этажа и квартиры, типы квартир и поэтажные планы (условные)."
       },
       "path": "hizmetler",
       "icon": "apartment",
@@ -30,7 +34,9 @@
       "name": {
         "tr": "Proje",
         "en": "Project",
-        "ar": "المشروع"
+        "ar": "المشروع",
+        "de": "Projekt",
+        "ru": "Проект"
       },
       "status": "play",
       "id": "hakkimizda",
@@ -52,7 +58,9 @@
       "description": {
         "tr": "Sayılar, vaziyet planı ve galeri.",
         "en": "Figures, site plan and gallery.",
-        "ar": "الأرقام ومخطط الموقع والمعرض."
+        "ar": "الأرقام ومخطط الموقع والمعرض.",
+        "de": "Zahlen, Lageplan und Galerie.",
+        "ru": "Цифры, план участка и галерея."
       }
     },
     {
@@ -60,12 +68,16 @@
       "name": {
         "tr": "Sorular",
         "en": "Questions",
-        "ar": "الأسئلة"
+        "ar": "الأسئلة",
+        "de": "FAQ",
+        "ru": "FAQ"
       },
       "description": {
         "tr": "Merak edilenler ve kısa yanıtlar.",
         "en": "Common questions and short answers.",
-        "ar": "أسئلة متكررة وإجابات موجزة."
+        "ar": "أسئلة متكررة وإجابات موجزة.",
+        "de": "Was Sie wissen möchten, in kurzen Antworten.",
+        "ru": "Что интересует читателей — в коротких ответах."
       },
       "path": "sorular",
       "icon": "help",
@@ -85,7 +97,9 @@
       "name": {
         "tr": "Konum",
         "en": "Location",
-        "ar": "الموقع"
+        "ar": "الموقع",
+        "de": "Standort",
+        "ru": "Местоположение"
       },
       "status": "play",
       "id": "iletisim",
@@ -106,7 +120,9 @@
       "description": {
         "tr": "Satış ofisi, ulaşım ve harita.",
         "en": "Sales office, transport and map.",
-        "ar": "مكتب المبيعات والمواصلات والخريطة."
+        "ar": "مكتب المبيعات والمواصلات والخريطة.",
+        "de": "Verkaufsbüro, Anfahrt und Karte.",
+        "ru": "Офис продаж, проезд и карта."
       }
     }
   ],

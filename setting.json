@@ -4,12 +4,16 @@
   "description": {
     "tr": "Çınarlı Bahçe Konutları: Bursa Nilüfer’de dört bloklu, bahçe merkezli konut projesi. Kat ve daire seçimi, konum ve ulaşım. Demo site; içerik kurgusaldır.",
     "en": "Cinarli Bahce Residences: a four-block, garden-centred housing project in Nilufer, Bursa. Choose floor and flat, see location and transport. Demo site; content is fictional.",
-    "ar": "مساكن تشينارلي باهتشه: مشروع سكني من أربعة مبانٍ حول حديقة في نيلوفر، بورصة. اختيار الطابق والشقة والموقع والمواصلات. موقع تجريبي؛ المحتوى افتراضي."
+    "ar": "مساكن تشينارلي باهتشه: مشروع سكني من أربعة مبانٍ حول حديقة في نيلوفر، بورصة. اختيار الطابق والشقة والموقع والمواصلات. موقع تجريبي؛ المحتوى افتراضي.",
+    "de": "Çınarlı Bahçe Konutları: Ein Wohnprojekt mit vier Blöcken und Gartenfokus in Nilüfer, Bursa. Etage und Wohnung wählen, Lage und Verkehr ansehen. Demo-Seite; Inhalte sind fiktiv.",
+    "ru": "Çınarlı Bahçe Konutları: жилой проект из четырёх блоков с акцентом на сад в Нилюфере, Бурса. Выбор этажа и квартиры, расположение и транспорт. Демо-сайт; контент вымышленный."
   },
   "keyword": {
     "tr": "konut projesi, satılık daire, Nilüfer, 2+1, 3+1, kat planı, satış ofisi",
     "en": "housing project, flats for sale, Nilufer, 2-bed, 3-bed, floor plan, sales office",
-    "ar": "مشروع سكني، شقق للبيع، نيلوفر، غرفتان، ثلاث غرف، مخطط الطابق، مكتب المبيعات"
+    "ar": "مشروع سكني، شقق للبيع، نيلوفر، غرفتان، ثلاث غرف، مخطط الطابق، مكتب المبيعات",
+    "de": "Wohnprojekt, Eigentumswohnung zu verkaufen, Nilüfer, 2+1, 3+1, Grundriss, Verkaufsbüro",
+    "ru": "жилой проект, квартира на продажу, Нилюфер, 2+1, 3+1, план этажа, офис продаж"
   },
   "category": "Kurumsal",
   "name": "Çınarlı Bahçe",
@@ -18,15 +22,27 @@
     "tr": true,
     "en": true,
     "ar": true,
-    "de": false,
-    "ru": false,
+    "de": true,
+    "ru": true,
     "es": false,
     "fr": false,
     "it": false,
     "ja": false,
     "zh": false,
     "ko": false,
-    "pt": false
+    "pt": false,
+    "fa": false,
+    "he": false,
+    "ur": false,
+    "nl": false,
+    "pl": false,
+    "uk": false,
+    "az": false,
+    "ka": false,
+    "el": false,
+    "bg": false,
+    "ro": false,
+    "hi": false
   },
   "logo": "logo.png",
   "multi": false,

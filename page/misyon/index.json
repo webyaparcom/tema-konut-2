@@ -3,17 +3,23 @@
   "name": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "description": {
     "tr": "Misyonumuz",
     "en": "Our mission",
-    "ar": "مهمتنا"
+    "ar": "مهمتنا",
+    "de": "Unsere Mission",
+    "ru": "Наша миссия"
   },
   "keyword": {
     "tr": "Misyon",
     "en": "mission, our mission, corporate responsibility",
-    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية"
+    "ar": "الرسالة, رسالتنا, المسؤولية المؤسسية",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "path": "misyon",
   "icon": "flag",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Misyonumuz</h2>\n<p>Bahçeyi merkeze alan, yürüyerek ulaşıma yakın ve yaşanabilir konutlar üretmek.</p>",
     "en": "<h2>Our mission</h2>\n<p>To build liveable homes centred on a garden and within walking distance of transport.</p>",
-    "ar": "<h2>مهمتنا</h2>\n<p>أن نبني مساكن صالحة للعيش تتوسطها حديقة وقريبة من المواصلات سيرًا.</p>"
+    "ar": "<h2>مهمتنا</h2>\n<p>أن نبني مساكن صالحة للعيش تتوسطها حديقة وقريبة من المواصلات سيرًا.</p>",
+    "de": "<h2>Unsere Mission</h2>\n<p>Bezahlbare Wohnungen mit Garten, die fußläufig an den ÖPNV angebunden sind.</p>",
+    "ru": "<h2>Наша миссия</h2>\n<p>Создавать комфортное жилье с садом, расположенное в пешей доступности от транспорта.</p>"
   },
   "title": {
     "tr": "Misyon",
     "en": "Mission",
-    "ar": "المهمة"
+    "ar": "المهمة",
+    "de": "Mission",
+    "ru": "Миссия"
   },
   "date": "2026-11-16T18:11:36.437Z",
   "update": "2026-11-16T18:12:19.056Z",
