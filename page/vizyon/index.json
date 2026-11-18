@@ -3,17 +3,23 @@
   "name": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "description": {
     "tr": "Vizyonumuz",
     "en": "Our vision",
-    "ar": "رؤيتنا"
+    "ar": "رؤيتنا",
+    "de": "Unsere Vision",
+    "ru": "Наше видение"
   },
   "keyword": {
     "tr": "Vizyon",
     "en": "vision, our vision, goals",
-    "ar": "الرؤية, رؤيتنا, الأهداف"
+    "ar": "الرؤية, رؤيتنا, الأهداف",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "path": "vizyon",
   "icon": "visibility",
@@ -29,12 +35,16 @@
   "text": {
     "tr": "<h2>Vizyonumuz</h2>\n<p>Her blokta komşuluğu güçlendiren ortak alanlar kurmak.</p>",
     "en": "<h2>Our vision</h2>\n<p>To create shared spaces that strengthen neighbourliness in every block.</p>",
-    "ar": "<h2>رؤيتنا</h2>\n<p>أن ننشئ في كل مبنى مساحات مشتركة تعزّز الجيرة.</p>"
+    "ar": "<h2>رؤيتنا</h2>\n<p>أن ننشئ في كل مبنى مساحات مشتركة تعزّز الجيرة.</p>",
+    "de": "<h2>Unsere Vision</h2>\n<p>In jedem Block Gemeinschaftsflächen zu schaffen, die die Nachbarschaft stärken.</p>",
+    "ru": "<h2>Наше видение</h2>\n<p>Создавать в каждом корпусе общие пространства, укрепляющие добрососедство.</p>"
   },
   "title": {
     "tr": "Vizyon",
     "en": "Vision",
-    "ar": "الرؤية"
+    "ar": "الرؤية",
+    "de": "Vision",
+    "ru": "Видение"
   },
   "date": "2026-11-16T18:11:36.437Z",
   "update": "2026-11-16T18:12:19.058Z",

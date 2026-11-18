@@ -2,7 +2,9 @@
   "name": {
     "tr": "Proje",
     "en": "Project",
-    "ar": "المشروع"
+    "ar": "المشروع",
+    "de": "Projekt",
+    "ru": "Проект"
   },
   "status": "play",
   "category": "",
@@ -24,7 +26,9 @@
   "description": {
     "tr": "Sayılar, vaziyet planı ve galeri.",
     "en": "Figures, site plan and gallery.",
-    "ar": "الأرقام ومخطط الموقع والمعرض."
+    "ar": "الأرقام ومخطط الموقع والمعرض.",
+    "de": "Zahlen, Lageplan und Galerie.",
+    "ru": "Цифры, план участка и галерея."
   },
   "spot": {
     "tr": "",
@@ -35,12 +39,16 @@
   "title": {
     "tr": "Proje",
     "en": "Project",
-    "ar": "المشروع"
+    "ar": "المشروع",
+    "de": "Projekt",
+    "ru": "Проект"
   },
   "keyword": {
     "tr": "hakkımızda",
     "en": "about",
-    "ar": "من نحن"
+    "ar": "من نحن",
+    "de": "Über uns",
+    "ru": "О нас"
   },
   "text": {},
   "update": "2026-11-16T18:12:19.043Z",
